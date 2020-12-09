@@ -34,6 +34,13 @@ public class Cube {
 	}
 	
 	private String filterCmd(String cmd) {
+		//U',R',L',B'와 u,r,l,b를 혼동하지 않도록 filtering하기 전에 소문자 제거 
+		cmd = cmd.replace("u", "");
+		cmd = cmd.replace("r", "");
+		cmd = cmd.replace("l", "");
+		cmd = cmd.replace("b", "");
+		
+		//U',R',L',B'를 소문자로 변경 
 		cmd = cmd.replace("U'", "u");
 		cmd = cmd.replace("R'", "r");
 		cmd = cmd.replace("L'", "l");
