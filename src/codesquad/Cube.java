@@ -34,7 +34,7 @@ public class Cube {
 		replaceColumn(col, temp);
 	}
 	
-	public void replaceColumn(int col, char[] toReplace) {
+	private void replaceColumn(int col, char[] toReplace) {
 		if(toReplace.length < 3 || (col < 0 || col >= 3)) 
 			return;
 		
@@ -43,7 +43,7 @@ public class Cube {
 		}
 	}
 	
-	public void replaceRow(int row, char[] toReplace) {
+	private void replaceRow(int row, char[] toReplace) {
 		if(toReplace.length < 3 || (row < 0 || row >= 3)) 
 			return;
 		
