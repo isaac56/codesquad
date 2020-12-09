@@ -5,6 +5,75 @@ public class Cube {
 	
 	public Cube () {
 	}
+	
+	public void executeCmds(String cmds) {
+		cmds = filterCmd(cmds);
+		
+		System.out.println("");
+		for(char cmd : cmds.toCharArray()) {
+			if(executeCmd(cmd)) {
+				System.out.println(restoreCmd(cmd));
+				System.out.println(this);
+			};
+		}
+	}
+	
+	private String restoreCmd(char cmd) {
+		switch(cmd) {
+		case 'u':
+			return "U'";
+		case 'r':
+			return "R'";
+		case 'l':
+			return "L'";
+		case 'b':
+			return "B'";
+		default:
+			return String.valueOf(cmd);
+		}
+	}
+	
+	private String filterCmd(String cmd) {
+		cmd = cmd.replace("U'", "u");
+		cmd = cmd.replace("R'", "r");
+		cmd = cmd.replace("L'", "l");
+		cmd = cmd.replace("B'", "b");
+		return cmd;
+	}
+	
+	
+	
+	private boolean executeCmd(char cmd) {
+		switch(cmd) {
+		case 'U':
+			shiftLeft(0,1);
+			break;
+		case 'u':
+			shiftLeft(0,-1);
+			break;
+		case 'R':
+			shiftUp(2,1);
+			break;
+		case 'r':
+			shiftUp(2,-1);
+			break;
+		case 'L':
+			shiftUp(0, -1);
+			break;
+		case 'l':
+			shiftUp(0, 1);
+			break;
+		case 'B':
+			shiftLeft(2, -1);
+			break;
+		case 'b':
+			shiftLeft(2, 1);
+			break;
+		default:
+			return false;
+		}
+		return true;
+	}
 		
 	public void shiftLeft(int row, int num) {
 		if(row < 0 || row >= 3)
