@@ -5,47 +5,31 @@ public class Cube {
 	
 	public Cube () {
 	}
-	
-	public void shiftLeft(int row) {
+		
+	public void shiftLeft(int row, int num) {
 		if(row < 0 || row >= 3)
 			return;
 		
+		//num이 음수인 경우를 고려하여 계산
+		num = 3 + (num % 3);
+		
 		char[] temp = new char[3];
 		for(int i = 0; i < 3; i++) {
-			temp[i] = this.current[row][(i + 1) % 3];
+			temp[i] = this.current[row][(i + num) % 3];
 		}
 		replaceRow(row, temp);
 	}
 	
-	public void shiftRight(int row) {
-		if(row < 0 || row >= 3)
-			return;
-		
-		char[] temp = new char[3];
-		for(int i = 0; i < 3; i++) {
-			temp[i] = this.current[row][(3 + i - 1) % 3];
-		}
-		replaceRow(row, temp);
-	}
-	
-	public void shiftUp(int col) {
+	public void shiftUp(int col, int num) {
 		if(col < 0 || col >= 3)
 			return;
 		
-		char[] temp = new char[3];
-		for(int i = 0; i < 3; i++) {
-			temp[i] = this.current[(i + 1) % 3][col];
-		}
-		replaceColumn(col, temp);
-	}
-	
-	public void shiftDown(int col) {
-		if(col < 0 || col >= 3)
-			return;
+		//num이 음수인 경우를 고려하여 계산 
+		num = 3 + (num % 3);
 		
 		char[] temp = new char[3];
 		for(int i = 0; i < 3; i++) {
-			temp[i] = this.current[(3 + i - 1) % 3][col];
+			temp[i] = this.current[(i + num) % 3][col];
 		}
 		replaceColumn(col, temp);
 	}
