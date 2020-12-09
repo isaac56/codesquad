@@ -75,7 +75,7 @@ public class Cube {
 		return true;
 	}
 		
-	public void shiftLeft(int row, int num) {
+	private void shiftLeft(int row, int num) {
 		if(row < 0 || row >= 3)
 			return;
 		
@@ -89,7 +89,7 @@ public class Cube {
 		replaceRow(row, temp);
 	}
 	
-	public void shiftUp(int col, int num) {
+	private void shiftUp(int col, int num) {
 		if(col < 0 || col >= 3)
 			return;
 		
