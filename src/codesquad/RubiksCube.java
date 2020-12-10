@@ -12,19 +12,20 @@ public class RubiksCube {
 		
 	}
 	
-	public void executeCmd(char cmd) {
-		if(cmd == 'U') { U(); 	return; }
-		if(cmd == 'u') { U_R(); return; }
-		if(cmd == 'L') { L(); 	return; }
-		if(cmd == 'l') { L_R(); return; }
-		if(cmd == 'F') { F(); 	return; }
-		if(cmd == 'f') { F_R(); return; }
-		if(cmd == 'R') { R();	return; }
-		if(cmd == 'r') { R_R();	return; }
-		if(cmd == 'B') { B(); 	return; }
-		if(cmd == 'b') { B_R();	return; }
-		if(cmd == 'D') { D(); 	return; }
-		if(cmd == 'd') { D_R();	return; }
+	public boolean executeCmd(char cmd) {
+		if(cmd == 'U') { U(); 	return true; }
+		if(cmd == 'u') { U_R(); return true; }
+		if(cmd == 'L') { L(); 	return true; }
+		if(cmd == 'l') { L_R(); return true; }
+		if(cmd == 'F') { F(); 	return true; }
+		if(cmd == 'f') { F_R(); return true; }
+		if(cmd == 'R') { R();	return true; }
+		if(cmd == 'r') { R_R();	return true; }
+		if(cmd == 'B') { B(); 	return true; }
+		if(cmd == 'b') { B_R();	return true; }
+		if(cmd == 'D') { D(); 	return true; }
+		if(cmd == 'd') { D_R();	return true; }
+		return false;
 	}
 	
 	public void U() {
