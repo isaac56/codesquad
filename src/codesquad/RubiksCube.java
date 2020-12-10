@@ -12,6 +12,27 @@ public class RubiksCube {
 		
 	}
 	
+	@Override
+	public String toString() {
+		String result = "";
+		result += ("TOP\n");
+		result += topPlane + "\n";
+		
+		result += "FRONT\tRIGHT\tREAR\tLEFT\n";
+		for(int i = 0; i < 3; i++) {
+			result += frontPlane.getRowString(i) + "\t"
+					+ rightPlane.getRowString(i) + "\t"
+					+ rearPlane.getRowString(i) + "\t"
+					+ leftPlane.getRowString(i) + "\n";
+		}
+		result += "\n";
+		
+		result += "BOTTOM\n";
+		result += bottomPlane + "\n";
+		
+		return result;
+	}
+	
 	private class Plane {
 		private char[][] state;
 		
