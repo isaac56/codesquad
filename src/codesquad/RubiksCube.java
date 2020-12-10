@@ -57,6 +57,17 @@ public class RubiksCube {
 	private class Plane {
 		private char[][] state;
 		
+		public Plane() {
+			state = new char[3][3];
+			char t = 'A';
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < 3; j++) {
+					state[i][j] = t;
+					t++;
+				}
+			}
+		}
+		
 		public Plane (char init) {
 			state = new char[3][3];
 			for (int i = 0; i < 3; i++) {
