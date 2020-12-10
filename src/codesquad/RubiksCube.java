@@ -17,7 +17,7 @@ public class RubiksCube {
 		this.setRandom(randomCnt);
 	}
 	
-	public void setRandom(int randomCnt) {
+	private void setRandom(int randomCnt) {
 		if(randomCnt <= 0) return;
 		
 		Random rand = new Random(System.currentTimeMillis());
@@ -75,7 +75,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public String restoreCmd(char cmd) {
+	private String restoreCmd(char cmd) {
 		if(cmd == 'u' || cmd == 'l' || cmd == 'f' ||
 		   cmd == 'r' || cmd == 'b' || cmd == 'd')
 		{
@@ -86,7 +86,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public String filterCmd(String cmd) {
+	private String filterCmd(String cmd) {
 		//U',L',F',R',B',D'와 u,l,f,r,b,d를 혼동하지 않도록 filtering하기 전에 소문자 제거 
 		cmd = cmd.replace("u", "");
 		cmd = cmd.replace("l", "");
@@ -105,7 +105,7 @@ public class RubiksCube {
 		return cmd;
 	}
 	
-	public boolean executeCmd(char cmd, int cmdNum) {
+	private boolean executeCmd(char cmd, int cmdNum) {
 		if(cmd == 'U') { U(cmdNum); 	return true; }
 		if(cmd == 'u') { U_R(cmdNum); 	return true; }
 		if(cmd == 'L') { L(cmdNum); 	return true; }
@@ -121,7 +121,7 @@ public class RubiksCube {
 		return false;
 	}
 	
-	public void U(int num) {
+	private void U(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getRow(0);
@@ -133,7 +133,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void U_R(int num) {
+	private void U_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getRow(0);
@@ -145,7 +145,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void L(int num) {
+	private void L(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getCol(0);
@@ -157,7 +157,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void L_R(int num) {
+	private void L_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getCol(0);
@@ -169,7 +169,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void F(int num) {
+	private void F(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = topPlane.getRow(2);
@@ -181,7 +181,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void F_R(int num) {
+	private void F_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = topPlane.getRow(2);
@@ -193,7 +193,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void R(int num) {
+	private void R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getCol(2);
@@ -205,7 +205,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void R_R(int num) {
+	private void R_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getCol(2);
@@ -217,7 +217,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void B(int num) {
+	private void B(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = rightPlane.getCol(2);
@@ -229,7 +229,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void B_R(int num) {
+	private void B_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = rightPlane.getCol(2);
@@ -241,7 +241,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void D(int num) {
+	private void D(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getRow(2);
@@ -253,7 +253,7 @@ public class RubiksCube {
 		}
 	}
 	
-	public void D_R(int num) {
+	private void D_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
 			char[] temp = frontPlane.getRow(2);
