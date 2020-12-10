@@ -290,10 +290,9 @@ public class RubiksCube {
 	}
 	
 	private class Plane {
-		private char[][] state;
+		private char[][] state = new char[3][3];
 		
 		public Plane() {
-			state = new char[3][3];
 			char t = 'A';
 			for(int i = 0; i < 3; i++) {
 				for(int j = 0; j < 3; j++) {
@@ -304,12 +303,22 @@ public class RubiksCube {
 		}
 		
 		public Plane (char init) {
-			state = new char[3][3];
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
 					state[i][j] = init;
 				}
 			}
+		}
+		
+		public Boolean isAllSame() {
+			char rep = this.state[0][0];
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < 3; j++) {
+					if (state[i][j] != rep)
+						return false;
+				}
+			}
+			return true;
 		}
 		
 		public char[] getRow(int rowNum) {
