@@ -34,7 +34,7 @@ public class RubiksCube {
 		if(cmd == 'u' || cmd == 'l' || cmd == 'f' ||
 		   cmd == 'r' || cmd == 'b' || cmd == 'd')
 		{
-			return (cmd + ('A' - 'a')) + "'";
+			return (char)(cmd + ('A' - 'a')) + "'";
 		}
 		else {
 			return String.valueOf(cmd);
