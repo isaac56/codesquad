@@ -21,6 +21,15 @@ public class RubiksCube {
 		leftPlane.setRow(0, temp);
 	}
 	
+	public void U_R() {
+		char[] temp = frontPlane.getRow(0);
+		
+		frontPlane.setRow(0, leftPlane.getRow(0));
+		leftPlane.setRow(0,  rearPlane.getRow(0));
+		rearPlane.setRow(0,  rightPlane.getRow(0));
+		rightPlane.setRow(0, temp);
+	}
+	
 	@Override
 	public String toString() {
 		String result = "";
