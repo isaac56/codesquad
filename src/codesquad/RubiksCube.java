@@ -91,6 +91,24 @@ public class RubiksCube {
 			}
 		}
 		
+		public void setRowReverse(int row, char[] toReplace) {
+			if(toReplace.length != 3) {
+				return;
+			}
+			for(int i = 0; i < 3; i++) {
+				this.state[row][2-i] = toReplace[i];
+			}
+		}
+		
+		public void setColReverse(int col, char[] toReplace) {
+			if(toReplace.length != 3) {
+				return;
+			}
+			for(int i = 0; i < 3; i++) {
+				this.state[2-i][col] = toReplace[i];
+			}
+		}
+		
 		public String getRowString (int row) {
 			String result = "";
 			for(int i = 0; i < 3; i++) {
