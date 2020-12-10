@@ -1,5 +1,7 @@
 package codesquad;
 
+import java.util.Random;
+
 public class RubiksCube {
 	private Plane frontPlane = new Plane('W');
 	private Plane rearPlane = new Plane('G');
@@ -9,7 +11,21 @@ public class RubiksCube {
 	private Plane bottomPlane = new Plane('R');
 	
 	public RubiksCube() {
+	}
+	
+	public RubiksCube(int randomCnt) {
+		this.setRandom(randomCnt);
+	}
+	
+	public void setRandom(int randomCnt) {
+		if(randomCnt <= 0) return;
 		
+		Random rand = new Random(System.currentTimeMillis());
+		char[] cmdArr = {'U', 'L', 'F', 'R', 'B', 'D'};
+		for(int i = 0; i < randomCnt; i++) {
+			int idx = rand.nextInt(cmdArr.length);
+			this.executeCmd(cmdArr[idx], 1);
+		}
 	}
 	
 	public Boolean executeCmds(String cmds) {
