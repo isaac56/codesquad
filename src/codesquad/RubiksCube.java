@@ -24,6 +24,14 @@ public class RubiksCube {
 			}
 		}
 		
+		public String getRowString (int row) {
+			String result = "";
+			for(int i = 0; i < 3; i++) {
+				result += state[row][i] + " ";
+			}
+			return result;
+		}
+		
 		@Override
 		public String toString() {
 			String result = "";
