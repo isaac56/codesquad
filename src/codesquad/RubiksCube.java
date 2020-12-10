@@ -12,6 +12,36 @@ public class RubiksCube {
 		
 	}
 	
+	public String restoreCmd(char cmd) {
+		if(cmd == 'u' || cmd == 'l' || cmd == 'f' ||
+		   cmd == 'r' || cmd == 'b' || cmd == 'd')
+		{
+			return (cmd + ('A' - 'a')) + "'";
+		}
+		else {
+			return String.valueOf(cmd);
+		}
+	}
+	
+	public String filterCmd(String cmd) {
+		//U',L',F',R',B',D'와 u,l,f,r,b,d를 혼동하지 않도록 filtering하기 전에 소문자 제거 
+		cmd = cmd.replace("u", "");
+		cmd = cmd.replace("l", "");
+		cmd = cmd.replace("f", "");
+		cmd = cmd.replace("r", "");
+		cmd = cmd.replace("b", "");
+		cmd = cmd.replace("d", "");
+		
+		//U',L',F',R',B',D'를 소문자로 변경 
+		cmd = cmd.replace("U'", "u");
+		cmd = cmd.replace("L'", "l");
+		cmd = cmd.replace("F'", "f");
+		cmd = cmd.replace("R'", "r");
+		cmd = cmd.replace("B'", "b");
+		cmd = cmd.replace("D'", "d");
+		return cmd;
+	}
+	
 	public boolean executeCmd(char cmd) {
 		if(cmd == 'U') { U(); 	return true; }
 		if(cmd == 'u') { U_R(); return true; }
