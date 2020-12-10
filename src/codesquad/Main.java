@@ -14,15 +14,18 @@ public class Main {
 		else 
 			cube = new RubiksCube();
 		
+		long startMillis = System.currentTimeMillis();
 		doCubeGame(cube, sc);
-		printExitingMessage(cube);
+		printExitingMessage(cube, System.currentTimeMillis() - startMillis);
 		sc.close();
 	}
 	
-	public static void printExitingMessage(RubiksCube cube) {
+	public static void printExitingMessage(RubiksCube cube, long passedMillis) {
 		if (cube.isSuccessCube()) 
 			System.out.println("축하합니다! 큐브 맞추기에 성공하셨습니다");
-		
+		long minutes = (passedMillis / 1000) / 60;
+		long seconds = (passedMillis / 1000) % 60;
+		System.out.println("경과시간: " + String.format("%02d:%02d", minutes, seconds));
 		System.out.println("조작갯수: " + cube.getChangeNum());
 		System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
 	}
