@@ -13,14 +13,8 @@ public class Main {
 			cube = new RubiksCube(100);
 		else 
 			cube = new RubiksCube();
-		System.out.println(cube);
 		
-		while(true) {
-			System.out.print("Cube> ");
-			if(cube.executeCmds(sc.nextLine()) == false)
-				break;
-		}
-		
+		doCubeGame(cube, sc);
 		printExitingMessage(cube);
 		sc.close();
 	}
@@ -43,6 +37,16 @@ public class Main {
 			else if (input.toUpperCase().equals("N")) {
 				return false;
 			}
+		}
+	}
+	
+	public static void doCubeGame(RubiksCube cube, Scanner sc) {
+		System.out.println(cube);
+		
+		while(true) {
+			System.out.print("Cube> ");
+			if(cube.executeCmds(sc.nextLine()) == false)
+				return;
 		}
 	}
 }
