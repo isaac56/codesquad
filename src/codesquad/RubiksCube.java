@@ -48,13 +48,13 @@ public class RubiksCube {
 				continue;
 			}
 			else if(cmd == 'Q') {
-				System.out.println("bye~");
 				return false;
 			}
 			else if(executeCmd(cmd, cmdNum)) {
 				System.out.println("");
 				System.out.println(restoreCmd(cmd) + (cmdNum != 1 ? cmdNum : ""));
 				System.out.print(this);
+				if(this.isSuccessCube()) return false;
 			}
 		}
 		System.out.println("");
