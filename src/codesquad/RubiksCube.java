@@ -9,6 +9,7 @@ public class RubiksCube {
 	private Plane rightPlane = new Plane('Y');
 	private Plane topPlane = new Plane('B');
 	private Plane bottomPlane = new Plane('R');
+	private int changeNum = 0;
 	
 	public RubiksCube() {
 	}
@@ -16,6 +17,8 @@ public class RubiksCube {
 	public RubiksCube(int randomCnt) {
 		this.setRandom(randomCnt);
 	}
+	
+	public int getChangeNum() { return changeNum; }
 	
 	private Boolean isSuccessCube() {
 		return frontPlane.isAllSame()
@@ -54,6 +57,8 @@ public class RubiksCube {
 				System.out.println("");
 				System.out.println(restoreCmd(cmd) + (cmdNum != 1 ? cmdNum : ""));
 				System.out.print(this);
+				changeNum += cmdNum;
+				
 				if(this.isSuccessCube()) return false;
 			}
 		}
