@@ -30,6 +30,22 @@ public class RubiksCube {
 		return true;
 	}
 	
+	private int getCmdNum(int numStartIdx, String cmds) {
+		int numEndIdx = -1;
+		for(int i = numStartIdx; i < cmds.length(); i++) {
+			if ('0' <= cmds.charAt(i) && cmds.charAt(i) <= '9')
+				numEndIdx = i;
+			else
+				break;
+		}
+		if (numEndIdx >= numStartIdx) {
+			return Integer.parseInt(cmds.substring(numStartIdx, numEndIdx + 1));
+		}
+		else {
+			return 1;
+		}
+	}
+	
 	public String restoreCmd(char cmd) {
 		if(cmd == 'u' || cmd == 'l' || cmd == 'f' ||
 		   cmd == 'r' || cmd == 'b' || cmd == 'd')
