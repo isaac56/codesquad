@@ -26,7 +26,7 @@ public class RubiksCube {
 				System.out.println("bye~");
 				return false;
 			}
-			else if(executeCmd(cmd)) {
+			else if(executeCmd(cmd, cmdNum)) {
 				System.out.println("");
 				System.out.println(restoreCmd(cmd) + cmdNum);
 				System.out.print(this);
@@ -89,128 +89,164 @@ public class RubiksCube {
 		return cmd;
 	}
 	
-	public boolean executeCmd(char cmd) {
-		if(cmd == 'U') { U(); 	return true; }
-		if(cmd == 'u') { U_R(); return true; }
-		if(cmd == 'L') { L(); 	return true; }
-		if(cmd == 'l') { L_R(); return true; }
-		if(cmd == 'F') { F(); 	return true; }
-		if(cmd == 'f') { F_R(); return true; }
-		if(cmd == 'R') { R();	return true; }
-		if(cmd == 'r') { R_R();	return true; }
-		if(cmd == 'B') { B(); 	return true; }
-		if(cmd == 'b') { B_R();	return true; }
-		if(cmd == 'D') { D(); 	return true; }
-		if(cmd == 'd') { D_R();	return true; }
+	public boolean executeCmd(char cmd, int cmdNum) {
+		if(cmd == 'U') { U(cmdNum); 	return true; }
+		if(cmd == 'u') { U_R(cmdNum); 	return true; }
+		if(cmd == 'L') { L(cmdNum); 	return true; }
+		if(cmd == 'l') { L_R(cmdNum); 	return true; }
+		if(cmd == 'F') { F(cmdNum); 	return true; }
+		if(cmd == 'f') { F_R(cmdNum); 	return true; }
+		if(cmd == 'R') { R(cmdNum);		return true; }
+		if(cmd == 'r') { R_R(cmdNum);	return true; }
+		if(cmd == 'B') { B(cmdNum); 	return true; }
+		if(cmd == 'b') { B_R(cmdNum);	return true; }
+		if(cmd == 'D') { D(cmdNum); 	return true; }
+		if(cmd == 'd') { D_R(cmdNum);	return true; }
 		return false;
 	}
 	
-	public void U() {
-		char[] temp = frontPlane.getRow(0);
-		
-		frontPlane.setRow(0, rightPlane.getRow(0));
-		rightPlane.setRow(0, rearPlane.getRow(0));
-		rearPlane.setRow(0, leftPlane.getRow(0));
-		leftPlane.setRow(0, temp);
+	public void U(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getRow(0);
+			
+			frontPlane.setRow(0, rightPlane.getRow(0));
+			rightPlane.setRow(0, rearPlane.getRow(0));
+			rearPlane.setRow(0, leftPlane.getRow(0));
+			leftPlane.setRow(0, temp);
+		}
 	}
 	
-	public void U_R() {
-		char[] temp = frontPlane.getRow(0);
-		
-		frontPlane.setRow(0, leftPlane.getRow(0));
-		leftPlane.setRow(0,  rearPlane.getRow(0));
-		rearPlane.setRow(0,  rightPlane.getRow(0));
-		rightPlane.setRow(0, temp);
+	public void U_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getRow(0);
+			
+			frontPlane.setRow(0, leftPlane.getRow(0));
+			leftPlane.setRow(0,  rearPlane.getRow(0));
+			rearPlane.setRow(0,  rightPlane.getRow(0));
+			rightPlane.setRow(0, temp);
+		}
 	}
 	
-	public void L() {
-		char[] temp = frontPlane.getCol(0);
-		
-		frontPlane.setCol(0, topPlane.getCol(0));
-		topPlane.setColReverse(0, rearPlane.getCol(2));
-		rearPlane.setColReverse(2, bottomPlane.getCol(0));
-		bottomPlane.setCol(0, temp);
+	public void L(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getCol(0);
+			
+			frontPlane.setCol(0, topPlane.getCol(0));
+			topPlane.setColReverse(0, rearPlane.getCol(2));
+			rearPlane.setColReverse(2, bottomPlane.getCol(0));
+			bottomPlane.setCol(0, temp);
+		}
 	}
 	
-	public void L_R() {
-		char[] temp = frontPlane.getCol(0);
-		
-		frontPlane.setCol(0,  bottomPlane.getCol(0));
-		bottomPlane.setColReverse(0, rearPlane.getCol(2));
-		rearPlane.setColReverse(2, topPlane.getCol(0));
-		topPlane.setCol(0, temp);
+	public void L_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getCol(0);
+			
+			frontPlane.setCol(0,  bottomPlane.getCol(0));
+			bottomPlane.setColReverse(0, rearPlane.getCol(2));
+			rearPlane.setColReverse(2, topPlane.getCol(0));
+			topPlane.setCol(0, temp);
+		}
 	}
 	
-	public void F() {
-		char[] temp = topPlane.getRow(2);
-		
-		topPlane.setRowReverse(2, leftPlane.getCol(2));
-		leftPlane.setCol(2, bottomPlane.getRow(0));
-		bottomPlane.setRowReverse(0, rightPlane.getCol(0));
-		rightPlane.setCol(0, temp);
+	public void F(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = topPlane.getRow(2);
+			
+			topPlane.setRowReverse(2, leftPlane.getCol(2));
+			leftPlane.setCol(2, bottomPlane.getRow(0));
+			bottomPlane.setRowReverse(0, rightPlane.getCol(0));
+			rightPlane.setCol(0, temp);
+		}
 	}
 	
-	public void F_R() {
-		char[] temp = topPlane.getRow(2);
-		
-		topPlane.setRow(2, rightPlane.getCol(0));
-		rightPlane.setColReverse(0, bottomPlane.getRow(0));
-		bottomPlane.setRow(0, leftPlane.getCol(2));
-		leftPlane.setColReverse(2, temp);
+	public void F_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = topPlane.getRow(2);
+			
+			topPlane.setRow(2, rightPlane.getCol(0));
+			rightPlane.setColReverse(0, bottomPlane.getRow(0));
+			bottomPlane.setRow(0, leftPlane.getCol(2));
+			leftPlane.setColReverse(2, temp);
+		}
 	}
 	
-	public void R() {
-		char[] temp = frontPlane.getCol(2);
-		
-		frontPlane.setCol(2, bottomPlane.getCol(2));
-		bottomPlane.setColReverse(2, rearPlane.getCol(0));
-		rearPlane.setColReverse(0, topPlane.getCol(2));
-		topPlane.setCol(2, temp);
+	public void R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getCol(2);
+			
+			frontPlane.setCol(2, bottomPlane.getCol(2));
+			bottomPlane.setColReverse(2, rearPlane.getCol(0));
+			rearPlane.setColReverse(0, topPlane.getCol(2));
+			topPlane.setCol(2, temp);
+		}
 	}
 	
-	public void R_R() {
-		char[] temp = frontPlane.getCol(2);
-		
-		frontPlane.setCol(2, topPlane.getCol(2));
-		topPlane.setColReverse(2, rearPlane.getCol(0));
-		rearPlane.setColReverse(0, bottomPlane.getCol(2));
-		bottomPlane.setCol(2, temp);
+	public void R_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getCol(2);
+			
+			frontPlane.setCol(2, topPlane.getCol(2));
+			topPlane.setColReverse(2, rearPlane.getCol(0));
+			rearPlane.setColReverse(0, bottomPlane.getCol(2));
+			bottomPlane.setCol(2, temp);
+		}
 	}
 	
-	public void B() {
-		char[] temp = rightPlane.getCol(2);
-		
-		rightPlane.setColReverse(2, bottomPlane.getRow(2));
-		bottomPlane.setRow(2, leftPlane.getCol(0));
-		leftPlane.setColReverse(0, topPlane.getRow(0));
-		topPlane.setRow(0,  temp);
+	public void B(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = rightPlane.getCol(2);
+			
+			rightPlane.setColReverse(2, bottomPlane.getRow(2));
+			bottomPlane.setRow(2, leftPlane.getCol(0));
+			leftPlane.setColReverse(0, topPlane.getRow(0));
+			topPlane.setRow(0,  temp);
+		}
 	}
 	
-	public void B_R() {
-		char[] temp = rightPlane.getCol(2);
-		
-		rightPlane.setCol(2, topPlane.getRow(0));
-		topPlane.setRowReverse(0, leftPlane.getCol(0));
-		leftPlane.setCol(0, bottomPlane.getRow(2));
-		bottomPlane.setRowReverse(2, temp);
+	public void B_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = rightPlane.getCol(2);
+			
+			rightPlane.setCol(2, topPlane.getRow(0));
+			topPlane.setRowReverse(0, leftPlane.getCol(0));
+			leftPlane.setCol(0, bottomPlane.getRow(2));
+			bottomPlane.setRowReverse(2, temp);
+		}
 	}
 	
-	public void D() {
-		char[] temp = frontPlane.getRow(2);
-		
-		frontPlane.setRow(2, leftPlane.getRow(2));
-		leftPlane.setRow(2, rearPlane.getRow(2));
-		rearPlane.setRow(2, rightPlane.getRow(2));
-		rightPlane.setRow(2, temp);
+	public void D(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getRow(2);
+			
+			frontPlane.setRow(2, leftPlane.getRow(2));
+			leftPlane.setRow(2, rearPlane.getRow(2));
+			rearPlane.setRow(2, rightPlane.getRow(2));
+			rightPlane.setRow(2, temp);
+		}
 	}
 	
-	public void D_R() {
-		char[] temp = frontPlane.getRow(2);
-		
-		frontPlane.setRow(2, rightPlane.getRow(2));
-		rightPlane.setRow(2, rearPlane.getRow(2));
-		rearPlane.setRow(2,  leftPlane.getRow(2));
-		leftPlane.setRow(2, temp);
+	public void D_R(int num) {
+		if (num <= 0) return;
+		for(int i = 0; i < num % 4; i++) {
+			char[] temp = frontPlane.getRow(2);
+			
+			frontPlane.setRow(2, rightPlane.getRow(2));
+			rightPlane.setRow(2, rearPlane.getRow(2));
+			rearPlane.setRow(2,  leftPlane.getRow(2));
+			leftPlane.setRow(2, temp);
+		}
 	}
 	
 	@Override
