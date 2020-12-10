@@ -93,6 +93,15 @@ public class RubiksCube {
 		topPlane.setRow(0,  temp);
 	}
 	
+	public void B_R() {
+		char[] temp = rightPlane.getCol(2);
+		
+		rightPlane.setCol(2, topPlane.getRow(0));
+		topPlane.setRowReverse(0, leftPlane.getCol(0));
+		leftPlane.setCol(0, bottomPlane.getRow(2));
+		bottomPlane.setRowReverse(2, temp);
+	}
+	
 	@Override
 	public String toString() {
 		String result = "[Rubik's cube state] \n";
