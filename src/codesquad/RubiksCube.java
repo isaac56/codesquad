@@ -58,6 +58,22 @@ public class RubiksCube {
 			return column;
 		}
 		
+		public void setRow(int row, char[] toReplace) {
+			if(toReplace.length != 3) {
+				return;
+			}
+			this.state[row] = toReplace;
+		}
+		
+		public void setCol(int col, char[] toReplace) {
+			if(toReplace.length != 3) {
+				return;
+			}
+			for(int i = 0; i < 3; i++) {
+				this.state[i][col] = toReplace[i];
+			}
+		}
+		
 		public String getRowString (int row) {
 			String result = "";
 			for(int i = 0; i < 3; i++) {
