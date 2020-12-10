@@ -21,7 +21,16 @@ public class Main {
 				break;
 		}
 		
+		printExitingMessage(cube);
 		sc.close();
+	}
+	
+	public static void printExitingMessage(RubiksCube cube) {
+		if (cube.isSuccessCube()) 
+			System.out.println("축하합니다! 큐브 맞추기에 성공하셨습니다");
+		
+		System.out.println("조작갯수: " + cube.getChangeNum());
+		System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
 	}
 	
 	public static Boolean checkRandom(Scanner sc) {
