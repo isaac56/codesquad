@@ -104,8 +104,12 @@ public class RubiksCube {
 			}
 		}
 		
-		public char[] getRow(int row) {
-			return state[row];
+		public char[] getRow(int rowNum) {
+			char[] row = new char[3];
+			for(int i = 0; i < 3; i++) {
+				row[i] = state[rowNum][i];
+			}
+			return row;
 		}
 		
 		public char[] getCol(int col) {
@@ -120,7 +124,9 @@ public class RubiksCube {
 			if(toReplace.length != 3) {
 				return;
 			}
-			this.state[row] = toReplace;
+			for(int i = 0; i < 3; i++) {
+				this.state[row][i] = toReplace[i];
+			}
 		}
 		
 		public void setCol(int col, char[] toReplace) {
