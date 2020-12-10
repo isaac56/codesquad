@@ -28,7 +28,7 @@ public class RubiksCube {
 			}
 			else if(executeCmd(cmd, cmdNum)) {
 				System.out.println("");
-				System.out.println(restoreCmd(cmd) + cmdNum);
+				System.out.println(restoreCmd(cmd) + (cmdNum != 1 ? cmdNum : ""));
 				System.out.print(this);
 			}
 		}
