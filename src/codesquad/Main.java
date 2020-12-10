@@ -12,15 +12,13 @@ public class Main {
 		while(true) {
 			System.out.print("CUBE> ");
 			String cmds = sc.nextLine();
-			if(cmds.equals("Q")) {
-				System.out.println("Bye~");
+			if(cube.executeCmds(cmds) == false) {
 				break;
-			}
-			else {
-				cube.executeCmds(cmds);
-			}
+			};
 		}
+		
 		sc.close();
+		return;
 	}
 
 }

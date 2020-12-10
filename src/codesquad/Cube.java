@@ -6,16 +6,22 @@ public class Cube {
 	public Cube () {
 	}
 	
-	public void executeCmds(String cmds) {
+	public Boolean executeCmds(String cmds) {
 		cmds = filterCmd(cmds);
 		
-		System.out.println("");
 		for(char cmd : cmds.toCharArray()) {
-			if(executeCmd(cmd)) {
+			if(cmd == 'Q') {
+				System.out.println("bye~");
+				return false;
+			}
+			else if(executeCmd(cmd)) {
+				System.out.println("");
 				System.out.println(restoreCmd(cmd));
-				System.out.println(this);
+				System.out.print(this);
 			};
 		}
+		System.out.println("");
+		return true;
 	}
 	
 	private String restoreCmd(char cmd) {
