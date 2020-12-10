@@ -17,6 +17,15 @@ public class RubiksCube {
 		this.setRandom(randomCnt);
 	}
 	
+	private Boolean isSuccessCube() {
+		return frontPlane.isAllSame()
+				&& rearPlane.isAllSame()
+				&& leftPlane.isAllSame()
+				&& rightPlane.isAllSame()
+				&& topPlane.isAllSame()
+				&& bottomPlane.isAllSame();
+	}
+	
 	private void setRandom(int randomCnt) {
 		if(randomCnt <= 0) return;
 		
