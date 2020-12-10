@@ -12,6 +12,21 @@ public class RubiksCube {
 		
 	}
 	
+	public void executeCmd(char cmd) {
+		if(cmd == 'U') { U(); 	return; }
+		if(cmd == 'u') { U_R(); return; }
+		if(cmd == 'L') { L(); 	return; }
+		if(cmd == 'l') { L_R(); return; }
+		if(cmd == 'F') { F(); 	return; }
+		if(cmd == 'f') { F_R(); return; }
+		if(cmd == 'R') { R();	return; }
+		if(cmd == 'r') { R_R();	return; }
+		if(cmd == 'B') { B(); 	return; }
+		if(cmd == 'b') { B_R();	return; }
+		if(cmd == 'D') { D(); 	return; }
+		if(cmd == 'd') { D_R();	return; }
+	}
+	
 	public void U() {
 		char[] temp = frontPlane.getRow(0);
 		
