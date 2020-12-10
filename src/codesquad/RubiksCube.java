@@ -12,6 +12,7 @@ public class RubiksCube {
 		
 	}
 	
+	
 	@Override
 	public String toString() {
 		String result = "";
@@ -43,6 +44,18 @@ public class RubiksCube {
 					state[i][j] = init;
 				}
 			}
+		}
+		
+		public char[] getRow(int row) {
+			return state[row];
+		}
+		
+		public char[] getCol(int col) {
+			char[] column = new char[3];
+			for(int i = 0; i < 3; i++) {
+				column[i] = state[i][col];
+			}
+			return column;
 		}
 		
 		public String getRowString (int row) {
