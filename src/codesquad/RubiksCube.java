@@ -12,6 +12,24 @@ public class RubiksCube {
 		
 	}
 	
+	public Boolean executeCmds(String cmds) {
+		cmds = filterCmd(cmds);
+		
+		for(char cmd : cmds.toCharArray()) {
+			if(cmd == 'Q') {
+				System.out.println("bye~");
+				return false;
+			}
+			else if(executeCmd(cmd)) {
+				System.out.println("");
+				System.out.println(restoreCmd(cmd));
+				System.out.print(this);
+			};
+		}
+		System.out.println("");
+		return true;
+	}
+	
 	public String restoreCmd(char cmd) {
 		if(cmd == 'u' || cmd == 'l' || cmd == 'f' ||
 		   cmd == 'r' || cmd == 'b' || cmd == 'd')
