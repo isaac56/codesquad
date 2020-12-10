@@ -15,19 +15,32 @@ public class RubiksCube {
 	public Boolean executeCmds(String cmds) {
 		cmds = filterCmd(cmds);
 		
-		for(char cmd : cmds.toCharArray()) {
-			if(cmd == 'Q') {
+		for(int i = 0; i < cmds.length(); i++) {
+			char cmd = cmds.charAt(i);
+			int cmdNum = getCmdNum(i+1, cmds);
+			
+			if(isNumChar(cmd)) {
+				continue;
+			}
+			else if(cmd == 'Q') {
 				System.out.println("bye~");
 				return false;
 			}
 			else if(executeCmd(cmd)) {
 				System.out.println("");
-				System.out.println(restoreCmd(cmd));
+				System.out.println(restoreCmd(cmd) + cmdNum);
 				System.out.print(this);
-			};
+			}
 		}
 		System.out.println("");
 		return true;
+	}
+	
+	private Boolean isNumChar(char c) {
+		if('0' <= c && c <= '9')
+			return true;
+		else
+			return false;
 	}
 	
 	private int getCmdNum(int numStartIdx, String cmds) {
