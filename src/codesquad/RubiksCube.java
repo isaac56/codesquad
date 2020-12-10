@@ -20,7 +20,7 @@ public class RubiksCube {
 	
 	public int getChangeNum() { return changeNum; }
 	
-	private Boolean isSuccessCube() {
+	public Boolean isSuccessCube() {
 		return frontPlane.isAllSame()
 				&& rearPlane.isAllSame()
 				&& leftPlane.isAllSame()
@@ -47,10 +47,7 @@ public class RubiksCube {
 			char cmd = cmds.charAt(i);
 			int cmdNum = getCmdNum(i+1, cmds);
 			
-			if(isNumChar(cmd)) {
-				continue;
-			}
-			else if(cmd == 'Q') {
+			if(cmd == 'Q') {
 				return false;
 			}
 			else if(executeCmd(cmd, cmdNum)) {
@@ -64,13 +61,6 @@ public class RubiksCube {
 		}
 		System.out.println("");
 		return true;
-	}
-	
-	private Boolean isNumChar(char c) {
-		if('0' <= c && c <= '9')
-			return true;
-		else
-			return false;
 	}
 	
 	private int getCmdNum(int numStartIdx, String cmds) {
