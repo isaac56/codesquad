@@ -128,8 +128,9 @@ public class RubiksCube {
 	private void U(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getRow(0);
+			topPlane.RotateClockwise();
 			
+			char[] temp = frontPlane.getRow(0);
 			frontPlane.setRow(0, rightPlane.getRow(0));
 			rightPlane.setRow(0, rearPlane.getRow(0));
 			rearPlane.setRow(0, leftPlane.getRow(0));
@@ -140,8 +141,9 @@ public class RubiksCube {
 	private void U_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getRow(0);
+			topPlane.RotateAntiClockwise();
 			
+			char[] temp = frontPlane.getRow(0);
 			frontPlane.setRow(0, leftPlane.getRow(0));
 			leftPlane.setRow(0,  rearPlane.getRow(0));
 			rearPlane.setRow(0,  rightPlane.getRow(0));
@@ -152,8 +154,9 @@ public class RubiksCube {
 	private void L(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getCol(0);
+			leftPlane.RotateClockwise();
 			
+			char[] temp = frontPlane.getCol(0);
 			frontPlane.setCol(0, topPlane.getCol(0));
 			topPlane.setColReverse(0, rearPlane.getCol(2));
 			rearPlane.setColReverse(2, bottomPlane.getCol(0));
@@ -164,8 +167,9 @@ public class RubiksCube {
 	private void L_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getCol(0);
+			leftPlane.RotateAntiClockwise();
 			
+			char[] temp = frontPlane.getCol(0);
 			frontPlane.setCol(0,  bottomPlane.getCol(0));
 			bottomPlane.setColReverse(0, rearPlane.getCol(2));
 			rearPlane.setColReverse(2, topPlane.getCol(0));
@@ -176,8 +180,9 @@ public class RubiksCube {
 	private void F(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = topPlane.getRow(2);
+			frontPlane.RotateClockwise();
 			
+			char[] temp = topPlane.getRow(2);
 			topPlane.setRowReverse(2, leftPlane.getCol(2));
 			leftPlane.setCol(2, bottomPlane.getRow(0));
 			bottomPlane.setRowReverse(0, rightPlane.getCol(0));
@@ -188,8 +193,9 @@ public class RubiksCube {
 	private void F_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = topPlane.getRow(2);
+			frontPlane.RotateAntiClockwise();
 			
+			char[] temp = topPlane.getRow(2);
 			topPlane.setRow(2, rightPlane.getCol(0));
 			rightPlane.setColReverse(0, bottomPlane.getRow(0));
 			bottomPlane.setRow(0, leftPlane.getCol(2));
@@ -200,8 +206,9 @@ public class RubiksCube {
 	private void R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getCol(2);
+			rightPlane.RotateClockwise();
 			
+			char[] temp = frontPlane.getCol(2);
 			frontPlane.setCol(2, bottomPlane.getCol(2));
 			bottomPlane.setColReverse(2, rearPlane.getCol(0));
 			rearPlane.setColReverse(0, topPlane.getCol(2));
@@ -212,8 +219,9 @@ public class RubiksCube {
 	private void R_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getCol(2);
+			rightPlane.RotateAntiClockwise();
 			
+			char[] temp = frontPlane.getCol(2);
 			frontPlane.setCol(2, topPlane.getCol(2));
 			topPlane.setColReverse(2, rearPlane.getCol(0));
 			rearPlane.setColReverse(0, bottomPlane.getCol(2));
@@ -224,8 +232,9 @@ public class RubiksCube {
 	private void B(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = rightPlane.getCol(2);
+			rearPlane.RotateClockwise();
 			
+			char[] temp = rightPlane.getCol(2);
 			rightPlane.setColReverse(2, bottomPlane.getRow(2));
 			bottomPlane.setRow(2, leftPlane.getCol(0));
 			leftPlane.setColReverse(0, topPlane.getRow(0));
@@ -236,8 +245,9 @@ public class RubiksCube {
 	private void B_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = rightPlane.getCol(2);
+			rearPlane.RotateAntiClockwise();
 			
+			char[] temp = rightPlane.getCol(2);
 			rightPlane.setCol(2, topPlane.getRow(0));
 			topPlane.setRowReverse(0, leftPlane.getCol(0));
 			leftPlane.setCol(0, bottomPlane.getRow(2));
@@ -248,8 +258,9 @@ public class RubiksCube {
 	private void D(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getRow(2);
+			bottomPlane.RotateClockwise();
 			
+			char[] temp = frontPlane.getRow(2);
 			frontPlane.setRow(2, leftPlane.getRow(2));
 			leftPlane.setRow(2, rearPlane.getRow(2));
 			rearPlane.setRow(2, rightPlane.getRow(2));
@@ -260,8 +271,9 @@ public class RubiksCube {
 	private void D_R(int num) {
 		if (num <= 0) return;
 		for(int i = 0; i < num % 4; i++) {
-			char[] temp = frontPlane.getRow(2);
+			bottomPlane.RotateAntiClockwise();
 			
+			char[] temp = frontPlane.getRow(2);
 			frontPlane.setRow(2, rightPlane.getRow(2));
 			rightPlane.setRow(2, rearPlane.getRow(2));
 			rearPlane.setRow(2,  leftPlane.getRow(2));
